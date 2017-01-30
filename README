@@ -1,0 +1,7 @@
+cpdlldeps.sh: recursively find the DLL dependencies of the object specified and
+copy them to the working directory.
+
+Make sure the directories holding the DLLs are in your PATH, e.g. by:
+	PATH=$PATH:/usr/x86_64-w64-mingw32
+Then copy the DLL dependencies of prog.exe to the working directory with:
+	./cpdlldeps prog.exe
