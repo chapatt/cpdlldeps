@@ -19,15 +19,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 #
-
-deps=`objdump -p "$1" | sed -n "s/^\`printf '\t'\`DLL Name: \(.*\.dll$\)/\1/p"`
+deps="`objdump -p "$1" | sed -n "s/^\`printf '\t'\`DLL Name: \(.*\.dll$\)/\1/p"`"
 
 for i in $deps; do
-	if [ `command -v $i` ]; then
-		if [ ! -f $i ]; then
-			cp `command -v $i` ./
-		fi
-
-		$0 `command -v $i`
+	if command -v "$i" >/dev/null && [ ! -f "./$i" ]; then
+		cp "`command -v "$i"`" ./
+		$0 "`command -v "$i"`"
 	fi
 done
