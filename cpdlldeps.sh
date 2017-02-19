@@ -22,8 +22,9 @@
 deps="`objdump -p "$1" | sed -n "s/^\`printf '\t'\`DLL Name: \(.*\.dll$\)/\1/p"`"
 
 for i in $deps; do
-	if command -v "$i" >/dev/null && [ ! -f "./$i" ]; then
-		cp "`command -v "$i"`" ./
-		$0 "`command -v "$i"`"
+	filename="`command -v "$i"`"
+	if [ -n "$filename" ] && [ ! -f "./$i" ]; then
+		cp "$filename" ./
+		$0 "$filename"
 	fi
 done
