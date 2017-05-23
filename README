@@ -1,5 +1,5 @@
 cpdlldeps.sh: recursively find the DLL dependencies of the object specified and
-copy them to the working directory.
+copy them to the working directory using MinGW32-w64 objdump.
 
 Make sure the directories holding the DLLs are in your PATH, e.g. by:
 	PATH=$PATH:/usr/x86_64-w64-mingw32
